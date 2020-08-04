@@ -76,9 +76,14 @@ function _addSchemaToSheet(spreadsheet, jsons = [], name, index) {
       const schema = json.Schema || {};
       Object.entries(schema).forEach(([key, value]) => data.push([key, value]));
       Logger.log(data);
-      pasteContent.push(...data);
+      pasteContent.push(data);
     });
-    sheet.getRange(1, 1, pasteContent.length, pasteContent[0].length).setValues(pasteContent);
+    let col = 1;
+    pasteContent.forEach(version => {
+      sheet.getRange(1, col, version.length, version[0].length).setValues(version);
+      col += 2;
+    })
+    
     result.success = true;
     const sheet1 = spreadsheet.getSheetByName("Sheet1");
     spreadsheet.deleteSheet(sheet1);
@@ -89,3 +94,4 @@ function _addSchemaToSheet(spreadsheet, jsons = [], name, index) {
     return result;
   }
 }
+
