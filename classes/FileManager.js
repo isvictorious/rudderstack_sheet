@@ -1,10 +1,11 @@
 class FileManager {
   constructor(name) {
     this.destinationFolder = DriveApp.getFolderById(globals.folder_ids.dataplane_schema);
+    this.templateSheet = SpreadsheetApp.openById(globals.sheets.template.id);
   }
 
   createNewSpreadsheet(name){
-    const file = SpreadsheetApp.create(name);
+    const file = this.templateSheet.copy(name);
     this._moveFiles(file.getId());
     return file;
   }

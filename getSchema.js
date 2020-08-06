@@ -18,7 +18,7 @@ function getSchema() {
   const rudderstack = new RudderstackCaller(keys);
 
   const schemaSpreadsheet = fileManager.createNewSpreadsheet(dataplane);
-
+  
   eventModelSheet.forEachRow((row, i) => {
     if (i > 0 && !result.apiFailed) {
       const eventType = row.col("eventType");
@@ -38,7 +38,7 @@ function getSchema() {
           schemaSpreadsheet,
           schema,
           eventIdentifier,
-          i - 1
+          i
         );
         result.callStack.push(i, addSchemaToSheetResult);
       } else {
@@ -47,6 +47,7 @@ function getSchema() {
       }
     }
   });
+  eventModelSheet.sheet.copyTo(schemaSpreadsheet);
   SpreadsheetApp.flush();
   result.success = true;
   Logger.log(result);
@@ -66,7 +67,7 @@ function _addSchemaToSheet(spreadsheet, jsons = [], name, index) {
     jsons.forEach((json) => {      
       const firstSeen = json.FirstSeen ? new Date(json.FirstSeen) : null;
       const data = [
-        ["EventID", json.eventID],
+        ["EventID", jsons.eventID],
         ["FirstSeen", firstSeen],
         ["ID", json.ID],
         ["LastSeen", json.LastSeen],

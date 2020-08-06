@@ -1,4 +1,9 @@
 const globals = {
+  sheets:{
+    template: {
+      id:'1Mgp2pQIGBeiP_yXvkJVNbxJLJxd1ddvjKBMvolurgUk'
+    }
+  },
   rudderstack: {
     baseUrl: 'https://theknotww-dataplane.rudderstack.com/protocols'
   },
