@@ -20,7 +20,7 @@ function getSchema() {
 
   eventModelSheet.forEachRow((row, i) => {
     if (i > 0 && !result.apiFailed) {     
-
+      const eventID = row.col('eventID');
       const getSchemaResult = rudderstack.getEventModelSchema(
         dataplane,
         eventID
@@ -31,7 +31,7 @@ function getSchema() {
         aggregator.addNewSchema({
           eventType: row.col("eventType"),
           eventIdentifier: row.col("eventIdentifier"),
-          eventID: row.col("eventID"),
+          eventID: eventID,
           versions: schema,
         });         
       } else {
@@ -45,7 +45,7 @@ function getSchema() {
     const addSchemaToSheetResult = this.addSchemaToSheet(schemaObject);
     result.callStack.push(addSchemaToSheetResult);
   }.bind(aggregator));
-
+  aggregator.deleteExtraSheets();
   eventModelSheet.sheet.copyTo(aggregator.schemaSpreadsheet);
   SpreadsheetApp.flush();
   result.success = true;
