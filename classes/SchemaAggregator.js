@@ -3,9 +3,6 @@ class SchemaAggregator {
     const fileManager = new FileManager();
     this.schema = [];
     this.schemaSpreadsheet = fileManager.createNewSpreadsheet(dataplane);
-    this.aggregatedSheet = fileManager.createNewSpreadsheet(
-      `${dataplane}-aggregated`
-    );
   }
 
   addNewSchema({ eventType, eventIdentifier, eventID, versions }) {
@@ -52,18 +49,11 @@ class SchemaAggregator {
   }
 
   deleteExtraSheets(){
-    const { schemaSpreadsheet, aggregatedSheet } = this;
-    
-    if (aggregatedSheet){
-      const aggSheet1 = aggregatedSheet.getSheetByName('Sheet1');
-      if (aggSheet1) {
-        aggregatedSheet.deleteSheet(aggSheet1);
-      }
-    }
+    const { schemaSpreadsheet } = this;
     if (schemaSpreadsheet){
-      const schemaSheet1 = aggregatedSheet.getSheetByName('Sheet1');
+      const schemaSheet1 = schemaSpreadsheet.getSheetByName('Sheet1');
       if (schemaSheet1) {
-        aggregatedSheet.deleteSheet(schemaSheet1);
+        schemaSpreadsheet.deleteSheet(schemaSheet1);
       }
     }
   }
