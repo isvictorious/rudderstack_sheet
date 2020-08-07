@@ -17,3 +17,8 @@ The results of these API calls are displayed in a new spreadsheet, with each eve
 As this new sheet contains its own scripts, it is copied from a template before being populated with the schema data. This template is the schemaSheet in this repo.
 
 If you would like to change the ids of template file or the location to which the copied sheet is saved to, modify the json file in `globals.js` in this project. To access the script from within the spreadsheet, navigate to Tools -> Script Editor to open the Google Apps Script editor. From here, you can open the `globals.gs` file on the left hand side of the screen. Replace the ids with the ids for your template and destination folder.
+
+/**
+    Coded by Dave Cook
+    www.davecookcodes.com
+*/
