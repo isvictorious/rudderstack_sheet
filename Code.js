@@ -1,4 +1,5 @@
 function getEventModels() {
+  setup();
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const dataplaneRange = ss.getRange('dataplane');
   if (!dataplaneRange) {
@@ -19,10 +20,11 @@ function getEventModels() {
     event.writeKey,
     event.eventType,
     event.eventIdentifier,
-    event.CreatedAt,
+    event.CreatedAt ? new Date(event.CreatedAt) : '',
   ]);
   eventModelSheet.clearValues();
   eventModelSheet.addNewRows(newRows);
+  eventModelSheet.sheet.activate();
 }
 
 function _getEventModelsFromApi(rudderstack, dataplane) {

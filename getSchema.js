@@ -1,4 +1,5 @@
 function getSchema() {
+  setup();
   const result = {
     success: false,
     methodName: "getSchema",

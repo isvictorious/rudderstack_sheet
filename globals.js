@@ -1,14 +1,13 @@
+
+
 const globals = {
   sheets:{
     template: {
-      id:'1Mgp2pQIGBeiP_yXvkJVNbxJLJxd1ddvjKBMvolurgUk'
+      id:''
     }
   },
-  rudderstack: {
-    baseUrl: 'https://theknotww-dataplane.rudderstack.com/protocols'
-  },
   folder_ids:{
-    dataplane_schema:'11ZBD73Q2N9ltd6Tjg9x73OGPR5kzZxsy',
+    dataplane_schema:'',
   },
-  debug_logger:true,
+  debug_logger:false,
 }

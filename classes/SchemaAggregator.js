@@ -91,6 +91,7 @@ class _Schema {
           .setValues(version);
         col += 2;
       });
+      formatSheet(sheet);
       result.success = true;
     } catch (err) {
       result.errors.push(err);
@@ -108,12 +109,12 @@ class _Schema {
     };
     try {
       const firstSeen = version.FirstSeen ? new Date(version.FirstSeen) : null;
+      const lastSeen = version.LastSeen ? new Date(version.LastSeen): null;
       const data = [
         ["EventID", this.eventID],
-        ["FirstSeen", firstSeen],
         ["ID", version.ID],
-        ["LastSeen", version.LastSeen],
-        ["Metadata", version.Metadata],
+        ["FirstSeen", firstSeen],        
+        ["LastSeen", lastSeen],
         ["versionID", version.versionID],
       ];
       const schema = version.Schema || {};
