@@ -115,7 +115,7 @@ class _Schema {
         ["ID", version.ID],
         ["FirstSeen", firstSeen],        
         ["LastSeen", lastSeen],
-        ["versionID", version.versionID],
+        ["versionID", version.VersionID],
       ];
       const schema = version.Schema || {};
 
