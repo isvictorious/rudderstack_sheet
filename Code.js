@@ -16,10 +16,10 @@ function getEventModels() {
 
   const newRows = eventModels.map((event) => [
     event.ID,
-    event.eventID,
-    event.writeKey,
-    event.eventType,
-    event.eventIdentifier,
+    event.EventID,
+    event.WriteKey,
+    event.EventType,
+    event.EventIdentifier,
     event.CreatedAt ? new Date(event.CreatedAt) : '',
   ]);
   eventModelSheet.clearValues();
